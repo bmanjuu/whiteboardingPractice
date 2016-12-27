@@ -2,6 +2,40 @@ import Foundation
 // ******** PRACTICE WITH STRINGS ******** \\
 
 // 1. Find the first non-repeated character in a String
+let testString = "kookaburra"
+
+func firstDistinctChar(word: String) -> String {
+    
+    var distinctChar = String()
+    var commonChar = [String]()
+    
+    for (i, char) in word.characters.enumerated() {
+        for j in (i+1)...(word.characters.count-1) {
+            if char == word[word.characters.index(word.startIndex, offsetBy: j)] {
+                commonChar.append(String(char))
+            } else if !commonChar.contains(String(char)) && j == word.characters.count-1 {
+                distinctChar = String(char)
+                return distinctChar
+            }
+        }
+    }
+    
+    return distinctChar
+}
+
+print(firstDistinctChar(word: testString))
+
+
+
+func firstDistinctCharRecursive(word: String) -> String {
+    
+    var distinctChar = String()
+    
+    if 
+    
+    return distinctChar
+    
+}
 
 
 // 2. Reverse a String iteratively and recursively
