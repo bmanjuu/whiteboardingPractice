@@ -23,19 +23,42 @@ func firstDistinctChar(word: String) -> String {
     return distinctChar
 }
 
-print(firstDistinctChar(word: testString))
+// print(firstDistinctChar(word: testString))
 
 
+let test = "p,ops"
+var findingDistinctChar = true
+var count = 0
+var distinctChar = String()
 
 func firstDistinctCharRecursive(word: String) -> String {
     
-    var distinctChar = String()
+    let noDistinctChar = "There are no distinct characters found in \(word)"
+    var wordWithoutSpaces = word.replacingOccurrences(of: " ", with: "")
     
-    if 
+    if findingDistinctChar == true && wordWithoutSpaces.characters.count > 0 {
+        
+        let char = wordWithoutSpaces.characters.first!
+        var remainingChar = wordWithoutSpaces[wordWithoutSpaces.characters.index(after: wordWithoutSpaces.characters.startIndex)..<wordWithoutSpaces.characters.endIndex]
+        
+        if remainingChar.characters.contains(char) {
+            remainingChar = remainingChar.replacingOccurrences(of: String(char), with: "")
+            firstDistinctCharRecursive(word: remainingChar)
+        } else {
+            findingDistinctChar == false
+            distinctChar = String(char)
+        }
+    }
     
-    return distinctChar
-    
+    if distinctChar.characters.count > 0 {
+        return distinctChar
+    } else {
+        return noDistinctChar
+    }
+
 }
+
+print(firstDistinctCharRecursive(word: test))
 
 
 // 2. Reverse a String iteratively and recursively
@@ -50,7 +73,7 @@ func reverseIteratively(str: String) -> String {
     return reversed
 }
 
-reverseIteratively(str: "Hello, this is a reversed string!")
+//reverseIteratively(str: "Hello, this is a reversed string!")
 
 // recursive
 func reverseRecursively(str: String) -> String {
@@ -65,6 +88,7 @@ func reverseRecursively(str: String) -> String {
         remainingLetters = reverseRecursively(str: remainingLetters)
         
         reversed = "\(last)\(remainingLetters)\(first)"
+        print("current word: \(str), reversed: \(reversed), remaining: \(remainingLetters)")
         
         
     } else if remainingLetters.characters.count == 1 {
@@ -74,7 +98,7 @@ func reverseRecursively(str: String) -> String {
     return reversed
 }
 
-reverseRecursively(str: "Puppies make me happy!")
+// reverseRecursively(str: "Puppies make me happy!")
 
 // alternate recursive solution
 //func reverseRecursively(str: String) -> String {
