@@ -25,11 +25,11 @@ func firstDistinctChar(word: String) -> String {
 
 // print(firstDistinctChar(word: testString))
 
-
+//RECURSIVE SOLUTION
 let test = "p,ops"
 var findingDistinctChar = true
-var count = 0
 var distinctChar = String()
+//need to set these outside of function b/c they are continuously being reset when the function is called recursively
 
 func firstDistinctCharRecursive(word: String) -> String {
     
@@ -58,9 +58,10 @@ func firstDistinctCharRecursive(word: String) -> String {
 
 }
 
-print(firstDistinctCharRecursive(word: test))
+//print(firstDistinctCharRecursive(word: test))
 
 
+// -------------------------------------------------------------------------------
 // 2. Reverse a String iteratively and recursively
 
 // iterative
@@ -100,27 +101,42 @@ func reverseRecursively(str: String) -> String {
 
 // reverseRecursively(str: "Puppies make me happy!")
 
-// alternate recursive solution
-//func reverseRecursively(str: String) -> String {
-//
-//    var result = ""
-//
-//    if str.characters.count > 0 {
-//
-//        let firstChar = str.characters.first!
-//        let charsWithoutFirstChar = str[str.characters.index(after: str.characters.startIndex)..<str.characters.endIndex]
-//        result = "\(reverseRecursively(str:charsWithoutFirstChar))\(firstChar)"
-//        print(result)
-//    }
-//
-//    return result
-//}
-//
-//reverseRecursively(str: "Hello")
+/* alternate recursive solution
+ func reverseRecursively(str: String) -> String {
+
+    var result = ""
+
+    if str.characters.count > 0 {
+
+        let firstChar = str.characters.first!
+        let charsWithoutFirstChar = str[str.characters.index(after: str.characters.startIndex)..<str.characters.endIndex]
+        result = "\(reverseRecursively(str:charsWithoutFirstChar))\(firstChar)"
+        print(result)
+    }
+
+    return result
+}
+
+reverseRecursively(str: "Hello") */
 
 
+
+// ------------------------------------------------------------------------------
 // 3. Determine if 2 Strings are anagrams
 
+func isAnagram(string1: String, string2: String) -> Bool {
+    
+    //length has to be the same
+    //share all common letters
+    
+    if string1.characters.count == string2.characters.count {
+        
+    }
+    
+    return false
+}
+
+// isAnagram(string1: "puppies", string2: "cat")
 
 // 4. Check if String is a palindrome
 
