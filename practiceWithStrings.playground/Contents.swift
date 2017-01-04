@@ -129,14 +129,27 @@ func isAnagram(string1: String, string2: String) -> Bool {
     //length has to be the same
     //share all common letters
     
+    var testString = Array(string2.characters)
+    var commonChar = [String]()
+    
     if string1.characters.count == string2.characters.count {
+        for char in string1.characters {
+            if testString.contains(char) {
+                commonChar.append(String(char))
+                testString.remove(at: testString.index(of: char)!)
+            }
+        }
         
+        if commonChar.count == string2.characters.count {
+            print("yes, \(string1) and \(string2) are anagrams")
+            return true
+        }
     }
     
     return false
 }
 
-// isAnagram(string1: "puppies", string2: "cat")
+isAnagram(string1: "pizza", string2: "zippas")
 
 // 4. Check if String is a palindrome
 
