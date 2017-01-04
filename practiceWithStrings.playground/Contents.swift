@@ -149,7 +149,31 @@ func isAnagram(string1: String, string2: String) -> Bool {
     return false
 }
 
-isAnagram(string1: "pizza", string2: "zippas")
+//isAnagram(string1: "pusheen", string2: "")
+
+func isAnagramRecursive(string1: String, string2: String) -> Bool {
+    
+    //second string will be reduced and tested for common characters with string 1
+    var string1Copy = string1
+    var string2Copy = string2
+    
+    if string1.characters.count == 0 && string2.characters.count == 0 {
+        return true
+    } else {
+        let string1Char = string1Copy.characters.popFirst()!
+        
+        if string2Copy.characters.contains(string1Char) {
+            string2Copy.remove(at: string2Copy.characters.index(of: string1Char)!)
+            if isAnagramRecursive(string1: string1Copy, string2: string2Copy) {
+                return true
+            }
+        }
+    }
+    
+    return false
+}
+
+isAnagramRecursive(string1: "taco", string2: "cato")
 
 // 4. Check if String is a palindrome
 
